@@ -10,15 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_13_151022) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_13_170442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "image"
+    t.string "duration"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.string "step_text"
+    t.integer "step_number"
+    t.bigint "exercise_id", null: false
+    t.index ["exercise_id"], name: "index_steps_on_exercise_id"
+  end
+
+  create_table "trackers", force: :cascade do |t|
+    t.bigint "exercise_id", null: false
+    t.bigint "user_id", null: false
+    t.string "exercise_name"
+    t.integer "exercise_reps"
+    t.string "comment"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exercise_id"], name: "index_trackers_on_exercise_id"
+    t.index ["user_id"], name: "index_trackers_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "full_name"
   end
 
+  add_foreign_key "steps", "exercises"
+  add_foreign_key "trackers", "exercises"
+  add_foreign_key "trackers", "users"
 end
