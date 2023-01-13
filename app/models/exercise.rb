@@ -1,4 +1,5 @@
 class Exercise < ApplicationRecord
-    has_many :users
-    has_many :trackers, through: :users
+    has_many :trackers
+    has_many :users, through: :trackers
+    has_many :steps
 end
