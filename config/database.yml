@@ -2,10 +2,7 @@
 #
 # Install the pg driver:
 #   gem install pg
-# On macOS with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-# On macOS with MacPorts:
-#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+
 # On Windows:
 #   gem install pg
 #       Choose the win32 build.
@@ -79,6 +76,9 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+
+
+# NEED TO FOLLOW DEPLOYMENT GUIDELINES
 production:
   <<: *default
   database: P5Project_production
