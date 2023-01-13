@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_170442) do
     t.bigint "exercise_id", null: false
     t.bigint "user_id", null: false
     t.string "exercise_name"
-    t.integer "exercise_reps"
+    t.string "exercise_reps"
     t.string "comment"
     t.date "date"
     t.datetime "created_at", null: false

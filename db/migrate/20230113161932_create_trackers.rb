@@ -4,7 +4,7 @@ class CreateTrackers < ActiveRecord::Migration[7.0]
       t.belongs_to :exercise, null: false, foreign_key: true
       t.belongs_to :user, null: false, foreign_key: true
       t.string :exercise_name
-      t.integer :exercise_reps
+      t.string :exercise_reps
       t.string :comment
       t.date :date
       t.timestamps
