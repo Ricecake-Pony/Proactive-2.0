@@ -39,7 +39,7 @@ module P5Project
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
 
-    # Use SameSite=Strict for all cookies to help protect against CSRF
+    # Use SameSite=Strict for all cookies to help protect against CSRF, means that the browser will only send these cookies in requests to websites that are on the same domain.
     config.action_dispatch.cookies_same_site_protection = :strict
   end
 end
