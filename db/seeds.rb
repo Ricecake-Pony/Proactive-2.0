@@ -27,3 +27,8 @@ Step.create(step_number: 1, step_text: "Touch those toes!", exercise: Exercise.s
 puts "Steps created!"
 
 puts "Seeding Finished"
+
+# Had error: (object doesn't support #inspect) this was because I had my associations flipped in my models. 
+# I had initially
+# has_many :users
+# has_many :trackers, through: :users
