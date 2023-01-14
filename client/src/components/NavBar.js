@@ -7,7 +7,7 @@ export default function NavBar () {
             <NavLink className="login" to="/login"> Login </NavLink>
             <NavLink className="home" to="/"> Home </NavLink>
             <NavLink className="exercises" to="/exercises"> Exercises </NavLink>
-            <NavLink className="tracker" to="/tracker"> Tracker </NavLink>
+            <NavLink className="tracker" to="/trackers"> Tracker </NavLink>
             <NavLink className= "signup" to="/signup">SignUp</NavLink>
         </>
     )

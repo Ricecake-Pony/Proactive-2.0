@@ -33,14 +33,15 @@ function App() {
   }, []);
 
   useEffect(() => {
-    function fetchTrackers(){
+    function fetchTrackerData(){
       fetch("/trackers")
       .then((r) => r.json())
-      .then((trackerData) => setExercises(trackerData));
+      .then((trackerData) => setTrackerLogs(trackerData));
     }
-    fetchTrackers();
+    fetchTrackerData();
   }, []);
-
+  
+  
   return (
     <div className="App">
       <header className="App-header"> 
