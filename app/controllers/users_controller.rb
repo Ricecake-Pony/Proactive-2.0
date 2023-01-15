@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
     skip_before_action :authorize
+
+    def index
+        users = User.all
+        render json: users
+    end
     
     def login
         user = User.create(user_params)
