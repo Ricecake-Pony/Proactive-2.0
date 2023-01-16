@@ -1,8 +1,9 @@
-import React from 'react'
+import {React} from 'react'
 
 export default function Tracker ({trackerLog}) {
+
     
-    
+
     return(
         <div className= "trackerLog">
             <h3>I'm the tracker log!</h3>

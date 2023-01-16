@@ -9,10 +9,11 @@ import {Route, Routes} from 'react-router-dom';
 import ExerciseContainer from './ExerciseContainer';
 import TrackerContainer from './TrackerContainer';
 
+
 function App() {
   const [user, setUser] = useState(null)
   const [exercises, setExercises] = useState([])
-  const [trackerLogs, setTrackerLogs] = useState([])
+  
 
   useEffect(() => {
     async function fetchData(){
@@ -32,16 +33,6 @@ function App() {
     fetchExercises();
   }, []);
 
-  useEffect(() => {
-    function fetchTrackerData(){
-      fetch("/trackers")
-      .then((r) => r.json())
-      .then((trackerData) => setTrackerLogs(trackerData));
-    }
-    fetchTrackerData();
-  }, []);
-  
-  
   return (
     <div className="App">
       <header className="App-header"> 
@@ -53,7 +44,7 @@ function App() {
           <Route exact path="/login" element={<Login  user= {user} onLogin= {setUser} />}/>
           <Route exact path="/signup" element={<SignUp user= {user} onSignUp={setUser} />}/>
           <Route exact path="/exercises" element={<ExerciseContainer exercises= {exercises}/>}/>
-          <Route exact path="/trackers" element={<TrackerContainer trackerLogs= {trackerLogs}/>}/>
+          <Route exact path="/trackers" element={<TrackerContainer />}/>
         </Routes>
     </div>
   );

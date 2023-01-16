@@ -1,13 +1,38 @@
-import {React} from 'react';
+import {React, useState, useEffect} from 'react';
 import Tracker from './Tracker';
+import TrackerForm from './TrackerForm';
 
-export default function TrackerContainer ({trackerLogs}) {
-    return(
-        <div className= "trackerLogContainer">
-            <h1>I'm the container</h1>
+export default function TrackerContainer () {
+    const [trackerLogs, setTrackerLogs] = useState([])
+
+    useEffect(() => {
+        function fetchTrackerData(){
+            fetch("/trackers")
+            .then((r) => r.json())
+            .then((trackerData) => setTrackerLogs(trackerData));
+        }
+        fetchTrackerData();
+        }, []);
+
+    function addTrackerLog (newEntry) {
+        fetch("/trackers",
             {
-            trackerLogs.map((trackerLog) => <Tracker key= {trackerLogs.id} trackerLog= {trackerLog} />)
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newEntry)
             }
-        </div>
+        )
+        .then(r => r.json())
+        .then((newTrackerData) => (setTrackerLogs((trackerLogs)=> ([...trackerLogs, newTrackerData]))))
+    }
+
+    return(
+            <div className= "trackerLogContainer">
+                <TrackerForm addTrackerLog={addTrackerLog} />
+                <h1>I'm the container</h1>
+                {
+                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLogs.id} trackerLog= {trackerLog} />)
+                }
+            </div>
     )
 }
