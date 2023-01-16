@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react';
 import Tracker from './Tracker';
 import TrackerForm from './TrackerForm';
 
-export default function TrackerContainer () {
+export default function TrackerContainer ({exercises}) {
     const [trackerLogs, setTrackerLogs] = useState([])
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function TrackerContainer () {
 
     return(
             <div className= "trackerLogContainer">
-                <TrackerForm addTrackerLog={addTrackerLog} />
+                <TrackerForm addTrackerLog={addTrackerLog} exercises= {exercises} />
                 <h1>I'm the container</h1>
                 {
                     trackerLogs.map((trackerLog) => <Tracker key= {trackerLogs.id} trackerLog= {trackerLog} />)

@@ -37,6 +37,7 @@ class TrackersController < ApplicationController
 
     def tracker_params
         params.permit(:exercise_name, :exercise_reps, :comment, :date, :exercise_id, :user_id)
+        # require(:tracker).
     end
 
     def render_not_found_response

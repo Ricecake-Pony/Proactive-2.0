@@ -44,7 +44,7 @@ function App() {
           <Route exact path="/login" element={<Login  user= {user} onLogin= {setUser} />}/>
           <Route exact path="/signup" element={<SignUp user= {user} onSignUp={setUser} />}/>
           <Route exact path="/exercises" element={<ExerciseContainer exercises= {exercises}/>}/>
-          <Route exact path="/trackers" element={<TrackerContainer />}/>
+          <Route exact path="/trackers" element={<TrackerContainer exercises= {exercises} />}/>
         </Routes>
     </div>
   );
