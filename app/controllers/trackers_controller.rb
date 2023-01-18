@@ -32,7 +32,8 @@ class TrackersController < ApplicationController
     def destroy
         tracker_log = find_tracker_log
         tracker_log.destroy
-        head :no_content
+        # head :no_content
+        render json: {}
     end
 
 

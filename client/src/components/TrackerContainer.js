@@ -33,11 +33,24 @@ export default function TrackerContainer ({exercises}) {
         
     }
 
+    function deleteTrackerLog (trackerLogId) {
+        console.log ('deleting....')
+        const filteredResult = trackerLogs.filter((trackerLog) => trackerLog.id !== trackerLogId)
+        setTrackerLogs(filteredResult)
+        fetch(`/trackers/${trackerLogId}`,
+        {
+            method: "DELETE"
+        })
+        .then(r => r.json())
+        .then( () => console.log(trackerLogId))
+    }
+
     return(
             <div className= "trackerLogContainer">
-                <TrackerForm addTrackerLog={addTrackerLog} exercises= {exercises} />
+                <TrackerForm className= "trackerForm" addTrackerLog={addTrackerLog} exercises= {exercises} />
                 {
-                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLog.id} trackerLog= {trackerLog} />)
+                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLog.id} trackerLog= {trackerLog} deleteTrackerLog={deleteTrackerLog}  />)
+                    // trackerLogs.map((trackerLog) => console.log({trackerLog}))
                 }
             </div>
     )

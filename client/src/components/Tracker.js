@@ -1,13 +1,14 @@
 import {React} from 'react'
 
-export default function Tracker ({trackerLog}) {
 
-    
+export default function Tracker ({trackerLog, deleteTrackerLog}) {
+
 
     return(
         <div className= "trackerLog">
             <h3>I'm the tracker log!</h3>
-            <p> {`Exercise Name: ${trackerLog.exercise_name}`}</p>
+            <button className="deleteButton" onClick={ (e) => {deleteTrackerLog(trackerLog.id)}}>Delete</button>
+            <p> {`Exercise: ${trackerLog.exercise_name}`}</p>
             <p>{`Amount of repetitions: ${trackerLog.exercise_reps}`}</p>
             <p>{`How did it go? ${trackerLog.comment}`}</p>
             <p>{`Date of entry: ${trackerLog.date}`}</p>

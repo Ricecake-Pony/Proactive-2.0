@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorize, only: [:create]
+    skip_before_action :authorize, only: [:create, :destroy]
     
     # def show
     #     user_logged_in = User.find_by_id(session[:user_id])
@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
     def create
         user = User.find_by(username: params[:username])
+        # debugger
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
             render json: user, status: :created
