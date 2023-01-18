@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import Tracker from './Tracker';
 import TrackerForm from './TrackerForm';
 
@@ -22,16 +22,22 @@ export default function TrackerContainer ({exercises}) {
                 body: JSON.stringify(newEntry)
             }
         )
-        .then(r => r.json())
-        .then((newTrackerData) => (setTrackerLogs((trackerLogs)=> ([...trackerLogs, newTrackerData]))))
+        .then(r => {
+            if (r.ok) {
+                r.json().then((newTrackerData) => (setTrackerLogs((trackerLogs)=> ([...trackerLogs, newTrackerData]))))
+            }
+            else{
+                r.json().then(console.log)
+            }
+        })
+        
     }
 
     return(
             <div className= "trackerLogContainer">
                 <TrackerForm addTrackerLog={addTrackerLog} exercises= {exercises} />
-                <h1>I'm the container</h1>
                 {
-                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLogs.id} trackerLog= {trackerLog} />)
+                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLog.id} trackerLog= {trackerLog} />)
                 }
             </div>
     )

@@ -2,7 +2,7 @@ import {React, useState} from 'react';
 
 export default function TrackerForm ({addTrackerLog, exercises}){
     // const [addExerciseName, setAddExerciseName] = useState("")
-    // const [selectedExerciseId, setSelectedExerciseId] = useState("")
+    const [selectedExerciseId, setSelectedExerciseId] = useState("")
     const [addExerciseReps, setAddExerciseReps] = useState("")
     const [addComment, setAddComment] = useState("")
     const [addDate, setAddDate] = useState("")
@@ -33,7 +33,7 @@ export default function TrackerForm ({addTrackerLog, exercises}){
                 e.preventDefault()
                 const newEntry = {
                     // exercise_name: addExerciseName,
-                    // exercise_id: selectedExerciseId,
+                    exercise_id: selectedExerciseId,
                     exercise_reps: addExerciseReps,
                     comment: addComment,
                     date: addDate
@@ -44,9 +44,9 @@ export default function TrackerForm ({addTrackerLog, exercises}){
             return(
                 <form onSubmit={submitNewTrackerLog}>
                     <label> Exercise Name: </label>
-                        <select >
+                        <select onChange={(e) => setSelectedExerciseId(e.target.value)} >
                         {/* value={selectedExerciseId} onChange={exerciseIdChange} */}
-                        {exercises.map((exercise) => <option> {exercise.title} </option>)} 
+                        {exercises.map((exercise) => <option key={exercise.id} value={exercise.id}> {exercise.title} </option>)} 
                         </select>
 
                         <label>Number of times Exercise was performed:</label>
