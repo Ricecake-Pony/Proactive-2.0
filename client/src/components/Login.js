@@ -36,7 +36,7 @@ export default function Login({ onLogin }) {
     
         <label htmlFor="username">Username</label>
         <input
-          class="username"
+          className="username"
           type="text"
           id="username"
           autoComplete="off"
@@ -46,7 +46,7 @@ export default function Login({ onLogin }) {
 
         <label htmlFor="password">Password</label>
         <input
-          class="password"
+          className="password"
           type="password"
           id="password"
           autoComplete="current-password"
@@ -65,45 +65,3 @@ export default function Login({ onLogin }) {
     </form>
   );
 }
-
-// export default Login;
-// export default function Login () {
-//     const [userToLogin, updateUserToLogin] = useState({
-//         username: "",
-//         password: ""
-//     }
-//     )
-//     console.log("State of userToLogin:", userToLogin)
-    
-//     const handleOnChangeForUserToLogin = (e) => {
-//         console.log(e)
-//         updateUserToLogin({...userToLogin, [e.target.name]:e.target.value})
-//     }
-    
-//     fetch("/login",
-//         { 
-//         method: "POST",
-//         headers: {"Content-Type":"application/json"},
-//         body:JSON.stringify(
-//             {
-//             username: "Pablo",
-//             password: "123"
-//             }
-//         )
-//         }
-//     )
-//     .then(r => r.json())
-//     .then (console.log)
-//     return(
-//         <div>
-//             <h1>Please Login!</h1>
-//             <form onSubmit={handleOnChangeForUserToLogin}>
-//                 <input 
-//                 onChange={handleOnChangeForUserToLogin}
-//                 name="username"/>
-//                 <input 
-//                 onChange={handleOnChangeForUserToLogin}
-//                 name="password"/>
-//             </form>
-//         </div>
-//     )

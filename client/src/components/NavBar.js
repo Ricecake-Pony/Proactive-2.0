@@ -16,10 +16,7 @@ export default function NavBar ({user}) {
                     <NavLink className="login" to="/login"> Login </NavLink>
                     <NavLink className= "signup" to="/signup">SignUp</NavLink>
                 </>
-
             }
-            {/* <p onClick={} > className= "logout" to="/lo"> LogOut </p> */}
-            {/* Conditional login to logout rendering */}
         </>
     )
 }

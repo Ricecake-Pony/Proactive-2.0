@@ -36,7 +36,6 @@ class TrackersController < ApplicationController
         render json: {}
     end
 
-
     private#######################################################
 
     def find_tracker_log

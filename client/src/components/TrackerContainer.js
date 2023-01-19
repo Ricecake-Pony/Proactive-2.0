@@ -33,6 +33,31 @@ export default function TrackerContainer ({exercises}) {
         
     }
 
+    function patchTrackerLog (updatedTrackerLog) {
+    fetch(`/trackers/${updatedTrackerLog.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedTrackerLog)
+    })
+    .then(r => {
+        if (r.ok) {
+            r.json().then((updatedTrackerData) => {
+                setTrackerLogs((trackerLogs) => {
+                    const updatedTrackerLogs = trackerLogs.map((trackerLog) => {
+                        if (trackerLog.id === updatedTrackerData.id) {
+                            return updatedTrackerData;
+                        }
+                        return trackerLog;
+                    });
+                    return updatedTrackerLogs;
+                });
+            });
+        } else {
+            r.json().then(console.log);
+        }
+    });
+}
+
     function deleteTrackerLog (trackerLogId) {
         console.log ('deleting....')
         const filteredResult = trackerLogs.filter((trackerLog) => trackerLog.id !== trackerLogId)
@@ -49,7 +74,7 @@ export default function TrackerContainer ({exercises}) {
             <div className= "trackerLogContainer">
                 <TrackerForm className= "trackerForm" addTrackerLog={addTrackerLog} exercises= {exercises} />
                 {
-                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLog.id} trackerLog= {trackerLog} deleteTrackerLog={deleteTrackerLog}  />)
+                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLog.id} trackerLog= {trackerLog} deleteTrackerLog={deleteTrackerLog} patchTrackerLog={patchTrackerLog} />)
                     // trackerLogs.map((trackerLog) => console.log({trackerLog}))
                 }
             </div>

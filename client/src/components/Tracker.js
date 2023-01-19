@@ -1,13 +1,16 @@
 import {React} from 'react'
 
 
-export default function Tracker ({trackerLog, deleteTrackerLog}) {
+export default function Tracker ({trackerLog, deleteTrackerLog, patchTrackerLog}) {
 
 
     return(
         <div className= "trackerLog">
-            <h3>I'm the tracker log!</h3>
-            <button className="deleteButton" onClick={ (e) => {deleteTrackerLog(trackerLog.id)}}>Delete</button>
+            <h43>Journal Entry:</h43>
+                <div>
+                    <button onClick={(e) => {patchTrackerLog(updatedTrackerLog)}}>Edit</button>
+                    <button className="deleteButton" onClick={ (e) => {deleteTrackerLog(trackerLog.id)}}>Delete</button>
+                </div>         
             <p> {`Exercise: ${trackerLog.exercise_name}`}</p>
             <p>{`Amount of repetitions: ${trackerLog.exercise_reps}`}</p>
             <p>{`How did it go? ${trackerLog.comment}`}</p>
@@ -15,4 +18,3 @@ export default function Tracker ({trackerLog, deleteTrackerLog}) {
         </div>
     )
 }
-

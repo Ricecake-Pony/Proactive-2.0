@@ -50,7 +50,6 @@ function App() {
           <Route exact path="/signup" element={<SignUp user= {user} onSignUp={setUser} />}/>
           <Route exact path="/exercises" element={<ExerciseContainer exercises= {exercises}/>}/>
           { user? <Route exact path="/trackers" element={<TrackerContainer exercises= {exercises} />}/> : <Route exact path="/login" element={<Login  user= {user} onLogin= {setUser} />}/> }
-          
           <Route path="*" element={<Login  user= {user} onLogin= {setUser} />}/>
         </Routes>
     </div>
