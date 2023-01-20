@@ -39,14 +39,15 @@ export default function TrackerForm ({addTrackerLog, exercises}){
                 }
                 console.log(newEntry)
                 addTrackerLog(newEntry)
+                
             }
 
             return(
                 <form onSubmit={submitNewTrackerLog}>
                     <label> Exercise Name: </label>
                         <select onChange={exerciseNameChange} >
-                        {/* value={selectedExerciseId} onChange={exerciseIdChange} */}
-                        {exercises.map((exercise) => <option key={exercise.id} value={exercise.id}> {exercise.title} </option>)} 
+                            <option defaultValue="" >Select Option</option>
+                            {exercises.map((exercise) => <option key={exercise.id} value={exercise.id}> {exercise.title} </option>)}
                         </select>
 
                         <label>Number of times Exercise was performed:</label>

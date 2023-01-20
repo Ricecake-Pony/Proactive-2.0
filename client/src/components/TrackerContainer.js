@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import Tracker from './Tracker';
 import TrackerForm from './TrackerForm';
+import UpdateForm from './UpdateForm';
 
 export default function TrackerContainer ({exercises}) {
     const [trackerLogs, setTrackerLogs] = useState([])
@@ -33,7 +34,15 @@ export default function TrackerContainer ({exercises}) {
         
     }
 
+    function filteredUpdatedLogs(updatedTrackerLog){
+        const filteredTrackerLogs = trackerLogs.filter( trackerLog => trackerLog.id !== updatedTrackerLog.id)
+            setTrackerLogs([...filteredTrackerLogs, updatedTrackerLog ])
+            console.log(updatedTrackerLog)
+    }
+
     function patchTrackerLog (updatedTrackerLog) {
+
+
     fetch(`/trackers/${updatedTrackerLog.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -41,22 +50,14 @@ export default function TrackerContainer ({exercises}) {
     })
     .then(r => {
         if (r.ok) {
-            r.json().then((updatedTrackerData) => {
-                setTrackerLogs((trackerLogs) => {
-                    const updatedTrackerLogs = trackerLogs.map((trackerLog) => {
-                        if (trackerLog.id === updatedTrackerData.id) {
-                            return updatedTrackerData;
-                        }
-                        return trackerLog;
-                    });
-                    return updatedTrackerLogs;
-                });
-            });
+            r.json().then(filteredUpdatedLogs)
         } else {
             r.json().then(console.log);
         }
     });
 }
+
+// Added above Patch function and passed props on line 78.
 
     function deleteTrackerLog (trackerLogId) {
         console.log ('deleting....')
@@ -72,11 +73,18 @@ export default function TrackerContainer ({exercises}) {
 
     return(
             <div className= "trackerLogContainer">
-                <TrackerForm className= "trackerForm" addTrackerLog={addTrackerLog} exercises= {exercises} />
+                <TrackerForm className= "trackerForm" addTrackerLog={addTrackerLog} exercises= {exercises}  />
+                <UpdateForm className= "updateForm" patchTrackerLog={patchTrackerLog} />
                 {
-                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLog.id} trackerLog= {trackerLog} deleteTrackerLog={deleteTrackerLog} patchTrackerLog={patchTrackerLog} />)
-                    // trackerLogs.map((trackerLog) => console.log({trackerLog}))
+                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLog.id} trackerLog= {trackerLog} deleteTrackerLog={deleteTrackerLog} />)
                 }
             </div>
     )
 }
+
+// What we need to do for my PATCH:
+// Grab the existing trackerLog.id
+// Grab the comment and have an input that changes the comment to whatever the user wishes. 
+// How would I like to edit it? Click the edit button and have a form appear with the input for the comment? How else could we do this? We could create a new page just for the update but that sounds awful.
+// 
+// Then submit the comment/click Edit to have it update.

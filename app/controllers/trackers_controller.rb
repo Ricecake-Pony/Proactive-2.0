@@ -25,8 +25,8 @@ class TrackersController < ApplicationController
 
     def update
         tracker = find_tracker_log 
-        student.update!(student_params)
-        render json: student, status: :accepted
+        tracker.update!(tracker_params)
+        render json: tracker, status: :accepted
         end
 
     def destroy
