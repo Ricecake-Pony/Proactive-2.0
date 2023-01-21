@@ -43,7 +43,7 @@ export default function TrackerForm ({addTrackerLog, exercises}){
             }
 
             return(
-                <form onSubmit={submitNewTrackerLog}>
+                <form className= "submitForm" onSubmit={submitNewTrackerLog}>
                     <label> Exercise Name: </label>
                         <select onChange={exerciseNameChange} >
                             <option defaultValue="" >Select Option</option>

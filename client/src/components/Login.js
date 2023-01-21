@@ -31,8 +31,9 @@ export default function Login({ onLogin }) {
       }
     });
   }
+  
   return (
-    <form  className="login-form" onSubmit={handleSubmit}>
+    <form  className="loginForm" onSubmit={handleSubmit}>
     
         <label htmlFor="username">Username</label>
         <input

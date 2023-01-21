@@ -40,13 +40,13 @@ export default function TrackerContainer ({exercises}) {
             console.log(updatedTrackerLog)
     }
 
-    function patchTrackerLog (updatedTrackerLog) {
+    function patchTrackerLog (updatedTrackerComment, trackerId) {
 
 
-    fetch(`/trackers/${updatedTrackerLog.id}`, {
+    fetch(`/trackers/${trackerId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedTrackerLog)
+        body: JSON.stringify(updatedTrackerComment)
     })
     .then(r => {
         if (r.ok) {
@@ -57,6 +57,7 @@ export default function TrackerContainer ({exercises}) {
     });
 }
 
+// Lets try to have the update form function here instead of its own component. Nah it overwrites the POST submit form when I place it here.
 // Added above Patch function and passed props on line 78.
 
     function deleteTrackerLog (trackerLogId) {
@@ -73,18 +74,13 @@ export default function TrackerContainer ({exercises}) {
 
     return(
             <div className= "trackerLogContainer">
+                <img src= "https://blog.myfitnesspal.com/wp-content/uploads/2017/08/UA_TEMP1MONWEEK_GFX_JP_TM_V4.jpg" alt= ""/>
                 <TrackerForm className= "trackerForm" addTrackerLog={addTrackerLog} exercises= {exercises}  />
-                <UpdateForm className= "updateForm" patchTrackerLog={patchTrackerLog} />
+                <UpdateForm className= "updateForm" />
                 {
-                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLog.id} trackerLog= {trackerLog} deleteTrackerLog={deleteTrackerLog} />)
+                    trackerLogs.map((trackerLog) => <Tracker key= {trackerLog.id} trackerLog= {trackerLog} deleteTrackerLog={deleteTrackerLog} patchTrackerLog= {patchTrackerLog}/>)
                 }
             </div>
     )
 }
 
-// What we need to do for my PATCH:
-// Grab the existing trackerLog.id
-// Grab the comment and have an input that changes the comment to whatever the user wishes. 
-// How would I like to edit it? Click the edit button and have a form appear with the input for the comment? How else could we do this? We could create a new page just for the update but that sounds awful.
-// 
-// Then submit the comment/click Edit to have it update.
