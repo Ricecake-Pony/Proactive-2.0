@@ -7,6 +7,10 @@ skip_before_action :authorize
         render json: exercises
     end
 
+    # def render_steps
+    #     exercise_steps = Exercise.self.render
+    # end
+
     def show
         exercise = find_exercise
         render json: exercise

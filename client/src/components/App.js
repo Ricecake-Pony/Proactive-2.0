@@ -14,6 +14,7 @@ function App() {
   const [user, setUser] = useState(null)
   console.log(user)
   const [exercises, setExercises] = useState([])
+  const [steps, setSteps] = useState([])
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -39,6 +40,15 @@ function App() {
     }
     fetchExercises();
   }, []);
+
+  // useEffect(() => {
+  //   function fetchExercises(){
+  //     fetch("/exercises")
+  //     .then((r) => r.json())
+  //     .then((stepsData) => setSteps(stepsData));
+  //   }
+  //   fetchExercises();
+  // }, []);
 
   return (
     <div className="App">

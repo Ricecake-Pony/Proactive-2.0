@@ -49,13 +49,13 @@ export default function TrackerForm ({addTrackerLog, exercises}){
                             <option defaultValue="" >Select Option</option>
                             {exercises.map((exercise) => <option key={exercise.id} value={exercise.id}> {exercise.title} </option>)}
                         </select>
-
+                        <br/>
                         <label>Number of times Exercise was performed:</label>
                         <input placeholder='Enter How many repetitions' type = "text" value={addExerciseReps} onChange={exerciseRepsChange}/>
-                            
+                        <br/>
                             <label>How did it go?</label>
                             <input placeholder='Enter a Comment' type = "text"value={addComment} onChange={commentChange}/>
-
+                            <br/>
                             <label>Date</label>
                             <input placeholder='When did you perform this Exercise?'type = "date" value={addDate} onChange={dateChange}/>
                                 <input type="submit"/>

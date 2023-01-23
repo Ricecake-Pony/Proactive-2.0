@@ -1,54 +1,57 @@
 .App {
   text-align: center;
-  background-color: #C0D8E0;
+  background: #AEFFD8;
+  background-image: linear-gradient(#ffffff ,#AEFFD8, #8AFFC1 );
   padding:0;
   margin: 0;
   height: 100%;
 }
 
 .appHeader {
-  background-color: #484538;
+  background-color: #AC8887;
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
-  justify-content: center;
+  justify-content:flex-start;
   font-size: calc(10px + 2vmin);
-  color: #33EB3D;
+  color: #8FDC97;
 }
 
 /* Link Text for NavBar */
+
 .homeLink {
-  color: #FF8360;
+  color: #9F4A54;
 }
 
 .exercisesLink{
-color: #FF8360;
+color: #9F4A54;
 }
 
 .trackerLink{
-color: #FF8360;
+color: #9F4A54;
 }
 
 .logoutLink{
-color: #FF8360;
+color: #9F4A54;
 }
 
 .loginLink{
-color: #FF8360;
+color: #9F4A54;
 }
 
 .signupLink{
-color: #FF8360;
+color: #9F4A54;
 }
 
 .homePage {
   flex-wrap: wrap;
+  font-family:cursive;
 }
 
 .homeFooter{
   border-style:solid;
-  border-color: #484538;
+  border-color: #9F4A54;
   border-width: 3.5px;
 }
 
@@ -58,11 +61,12 @@ color: #FF8360;
   justify-content: flex-end;
   /* margin: 15px; */
   padding: auto;
-    width: 50%;
-    height: 400px;
+    width: 25%;
+    height: 200px;
     border-radius: 15px;
     
 }
+
 
 /* Login Page */
 
@@ -88,10 +92,11 @@ color: #FF8360;
 }
 
 .trackerLogContainer{
-  border-style: solid;
+  border-style: groove;
   margin-top: 10%;
   margin-left: 30%;
   margin-right: 30%;
+  padding: 10px;
 }
 
 .submitForm{
@@ -106,6 +111,8 @@ color: #FF8360;
 .trackerLog{
   border-style:ridge;
   border-width: 10px;
+  border-radius: 2%;
+  border-color:#AC8887;
 }
 
 .trackerLog p{

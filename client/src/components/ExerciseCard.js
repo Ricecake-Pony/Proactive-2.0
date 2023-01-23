@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function ExerciseCard ({exercise}) {
+    console.log(exercise)
     return(
         <div className= "exerciseCard">
                 <img className="exerciseImage"
@@ -9,7 +10,12 @@ export default function ExerciseCard ({exercise}) {
                 />
             <p>{exercise.title}</p>
             <p>{exercise.description}</p>
+            <ol>
+                {exercise.render_steps.map((exerciseObj) => <li> {exerciseObj.step_text} </li>)}
+            </ol>
             <p> {exercise.duration} </p>
         </div>
     )
 }
+
+//I'm trying to render the steps of the exercises without passing props for the steps themselves since they're associated with the exercises. 
