@@ -39,9 +39,9 @@ height: 100;
   border-color: white;
   padding: 10px;
 }
-.homeLink {
-  /* border-left: 6px solid green; */
-}
+/* .homeLink {
+  border-left: 6px solid green; 
+} 
 
 .exercisesLink{
 
@@ -61,7 +61,7 @@ height: 100;
 
 .signupLink{
 
-}
+} */
 
 .homePage {
   flex-wrap: wrap;
@@ -74,22 +74,45 @@ height: 100;
 .img1{
   float: right;
   margin: 10px;
-  width: 30%;
-    height: 300px;
+  width: 25%;
+    height: 350px;
 }
 
-.homePage img{
-  /* align-items: center; */
-  /* justify-content: flex-end;
+/* .homePage img{
+  float: right;
+  margin: 10px;
+  width: 30%;
+    height: 350px;
   padding: auto;
-    width: 25%;
-    height: 200px;
-    border-radius: 15px;
-     */
+} */
+
+.bullets{
+  margin-left: 20%;
+  text-align: left;
+  list-style-position: inside;
 }
 
 .negativesParagraph{
-  margin-top: 15%;
+  margin-top: 8%;
+  margin-bottom: 1%;
+}
+
+.negativesImg1{
+  flex-wrap: nowrap;
+  width: 25%;
+  height: 350px;
+}
+
+.negativesImg2{
+  flex-wrap: wrap;
+  width: 25%;
+  height: 350px;
+  margin-left: 20px;
+  
+}
+
+.homeFooter{
+  margin-top: 1%;
 }
 
 
@@ -130,7 +153,7 @@ height: 100;
 
 .trackerLogContainer img{
   width: 400px;
-  height: 300px;
+  height: 350px;
 }
 
 .trackerLog{
