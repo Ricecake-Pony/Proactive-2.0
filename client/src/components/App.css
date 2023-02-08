@@ -33,7 +33,7 @@ height: 100;
 /* Link Text for NavBar */
 
 .navBar{
-  font-size: larger;
+  font-size: 200%;
   display: inline-block;
   border: solid;
   border-color: white;
