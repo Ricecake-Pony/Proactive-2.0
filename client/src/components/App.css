@@ -1,47 +1,66 @@
+html, body {
+  background: rgb(0, 0, 0);
+  flex-wrap: wrap;
+width: 100;
+height: 100;
+}
+
+/* .appBackground{
+  background: rgb(0, 0, 0);
+  flex-wrap: wrap;
+} */
 .App {
   text-align: center;
-  background: #AEFFD8;
-  background-image: linear-gradient(#ffffff ,#AEFFD8, #8AFFC1 );
+  background-image: linear-gradient(to right, rgb(67,124,205), rgb(69,214,202));
   padding:0;
   margin: 0;
   height: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+
 .appHeader {
-  background-color: #AC8887;
+  background-color: transparent;
   min-height: 10vh;
   display: flex;
   /* flex-direction: column; */
   align-items: center;
   justify-content:flex-start;
   font-size: calc(10px + 2vmin);
-  color: #8FDC97;
 }
 
 /* Link Text for NavBar */
 
+.navBar{
+  font-size: larger;
+  display: inline-block;
+  border: solid;
+  border-color: white;
+  padding: 10px;
+}
 .homeLink {
-  color: #9F4A54;
+  /* border-left: 6px solid green; */
 }
 
 .exercisesLink{
-color: #9F4A54;
+
 }
 
 .trackerLink{
-color: #9F4A54;
+
 }
 
 .logoutLink{
-color: #9F4A54;
+
 }
 
 .loginLink{
-color: #9F4A54;
+
 }
 
 .signupLink{
-color: #9F4A54;
+
 }
 
 .homePage {
@@ -49,22 +68,28 @@ color: #9F4A54;
   font-family:cursive;
 }
 
-.homeFooter{
-  border-style:solid;
-  border-color: #9F4A54;
-  border-width: 3.5px;
+.home p{
+  text-align: left;
+}
+.img1{
+  float: right;
+  margin: 10px;
+  width: 30%;
+    height: 300px;
 }
 
 .homePage img{
-  flex-flow: column wrap;
   /* align-items: center; */
-  justify-content: flex-end;
-  /* margin: 15px; */
+  /* justify-content: flex-end;
   padding: auto;
     width: 25%;
     height: 200px;
     border-radius: 15px;
-    
+     */
+}
+
+.negativesParagraph{
+  margin-top: 15%;
 }
 
 

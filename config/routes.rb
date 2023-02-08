@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :steps
+  resources :steps, only: [:index]
   resources :trackers
-  resources :exercises
-  resources :users
+  resources :exercises, only: [:index, :show]
+  resources :users, only: [:index]
 
 
   get "/me", to: "users#show"
