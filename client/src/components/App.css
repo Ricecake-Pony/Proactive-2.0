@@ -1,8 +1,10 @@
-html, body {
-  background: rgb(0, 0, 0);
+html,
+body {
+  background: #1a1d1e;
+  color: white;
   flex-wrap: wrap;
-width: 100;
-height: 100;
+  width: 100%;
+  height: 100%;
 }
 
 /* .appBackground{
@@ -11,71 +13,134 @@ height: 100;
 } */
 .App {
   text-align: center;
-  background-image: linear-gradient(to right, rgb(67,124,205), rgb(69,214,202));
-  padding:0;
+  /* background-image: linear-gradient(
+    to right,
+    rgb(67, 124, 205),
+    rgb(69, 214, 202)
+  );
+  padding: 0;
   margin: 0;
   height: 100%;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 
-
-.appHeader {
-  background-color: transparent;
-  min-height: 10vh;
+/* contains the entire nav bar. Takes up 100% (relative) of the screen centers all the immediate divs inside */
+.nav-bar {
+  width: 100%;
+  height: 80px;
+  font-size: 17px;
   display: flex;
-  /* flex-direction: column; */
+  justify-content: space-evenly;
   align-items: center;
-  justify-content:flex-start;
-  font-size: calc(10px + 2vmin);
+  border-bottom: 3px solid white;
+
+  font-family: 'Lato' , sans-serif;
+}
+
+.nav-bar a{
+  text-decoration: none;
+}
+/* proactive logo. Spaced to the left */
+.app-header {
+  width: 20%;
+  background-color: transparent;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center;
+  justify-content:flex-start; */
 }
 
 /* Link Text for NavBar */
 
-.navBar{
-  font-size: 200%;
-  display: inline-block;
-  border: solid;
-  border-color: white;
-  padding: 10px;
+/* navigation links at the center. Also has display flex to center the individual links inside itself*/
+.nav-links {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
-/* .homeLink {
-  border-left: 6px solid green; 
-} 
-
-.exercisesLink{
-
+.nav-links a{
+  color: white;
 }
 
-.trackerLink{
+
+/* contains both buttons. display flex used to evenly space the individual buttons inside the div*/
+.nav-buttons {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+
+.login {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  transition: background-color .3s; 
+  cursor: pointer;
+  background-color: white;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+/* */
+/* what is stroke? The level/degree of boldness. */
+.login a{
+  color: #397769;
 
 }
 
-.logoutLink{
+.signup {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  transition: background-color .5s;
+  cursor: pointer;
+  color: white;
+  background-color: #76c3b1;
+
+  font-size: 18px;
+  font-weight: 700;
 
 }
-
-.loginLink{
-
+.signup a{
+  color: white;
+  text-decoration: none;
+}
+.login:hover{
+  color: white;
+  background-color: #76c3b1;
 }
 
-.signupLink{
+.signup:hover{
+  color: #76c3b1;
+  background-color: white;
+}
 
-} */
+ /* transition is used for transitioning the action of a CSS. so a .1-.3 otherwise it'll be too long depends on the exact animation tho. As it has to be curtailed to the user experience */
 
 .homePage {
   flex-wrap: wrap;
-  font-family:cursive;
+  font-family: cursive;
 }
 
-.home p{
+.home p {
   text-align: left;
 }
-.img1{
+.img1 {
   float: right;
   margin: 10px;
   width: 25%;
-    height: 350px;
+  height: 350px;
 }
 
 /* .homePage img{
@@ -86,38 +151,35 @@ height: 100;
   padding: auto;
 } */
 
-.bullets{
+.bullets {
   margin-left: 20%;
   text-align: left;
   list-style-position: inside;
 }
 
-.negativesParagraph{
+.negativesParagraph {
   margin-top: 8%;
   margin-bottom: 1%;
 }
 
-.negativesImg1{
+.negativesImg1 {
   flex-wrap: nowrap;
   width: 25%;
   height: 350px;
 }
 
-.negativesImg2{
+.negativesImg2 {
   flex-wrap: wrap;
   width: 25%;
   height: 350px;
   margin-left: 20px;
-  
 }
 
-.homeFooter{
+.homeFooter {
   margin-top: 1%;
 }
 
-
 /* Login Page */
-
 
 /* Exercise Cards */
 .exerciseCard {
@@ -129,17 +191,17 @@ height: 100;
   align-content: space-between;
 }
 
-.exerciseCard img{
+.exerciseCard img {
   height: auto;
   width: 200px;
 }
 
-.exerciseCard p{
+.exerciseCard p {
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.trackerLogContainer{
+.trackerLogContainer {
   border-style: groove;
   margin-top: 10%;
   margin-left: 30%;
@@ -147,24 +209,22 @@ height: 100;
   padding: 10px;
 }
 
-.submitForm{
-  
+.submitForm {
 }
 
-.trackerLogContainer img{
+.trackerLogContainer img {
   width: 400px;
   height: 350px;
 }
 
-.trackerLog{
-  border-style:ridge;
+.trackerLog {
+  border-style: ridge;
   border-width: 10px;
   border-radius: 2%;
-  border-color:#AC8887;
+  border-color: #ac8887;
 }
 
-.trackerLog p{
+.trackerLog p {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-

@@ -44,9 +44,6 @@ function App() {
   return (
     <div className="appBackground">
       <div className="App">
-        <header className="appHeader"> 
-        Welcome to Proactive!
-        </header>
         <NavBar className="appLinks" user={user} setUser={setUser}/>
           <Routes >
             <Route exact path="/" element={<Home user={user} setUser ={setUser}/>}/>

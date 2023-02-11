@@ -20,7 +20,6 @@ class TrackersController < ApplicationController
         else
             render json: {error: new_tracker_log.errors.full_messages}, status: 422
         end
-
     end
 
     def update
