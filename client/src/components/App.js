@@ -1,61 +1,126 @@
-import React, {useState, useEffect} from 'react';
-import './App.css';
-import Login from './Login';
-import Logout from './Logout';
-import SignUp from './Signup';
-import Home from './Home';
-import NavBar from './NavBar';
-import {Route, Routes, useNavigate } from 'react-router-dom';
-import ExerciseContainer from './ExerciseContainer';
-import TrackerContainer from './TrackerContainer';
+import React, { useState, useEffect } from "react";
+import Login from "./NavigationBar/Login.js";
+import Logout from "./NavigationBar/Logout.js";
+import SignUp from "./NavigationBar/SignUp.js";
+import Home from "./Homepage/Home.js";
+import NavBar from "./NavigationBar/NavBar.js";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import ExerciseContainer from "./Excercises/ExerciseContainer";
+import TrackerContainer from "./Tracker/TrackerContainer.js";
+import styled from "@emotion/styled";
+import { Global, css } from "@emotion/react";
 
+const Container = styled.div`
+  color: white;
+  flex-wrap: wrap;
+  width: 100vw;
+  .App {
+    text-align: center;
+  }
+  .app-header {
+    width: 20%;
+    background-color: transparent;
+  }
+  .exerciseCard {
+    border-style: solid;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-content: space-between;
+  }
+
+  .exerciseCard img {
+    height: auto;
+    width: 200px;
+  }
+
+  .exerciseCard p {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+`;
 
 function App() {
-  const [user, setUser] = useState(null)
-  console.log(user)
-  const [exercises, setExercises] = useState([])
-  const [steps, setSteps] = useState([])
-  let navigate = useNavigate()
+  const [user, setUser] = useState(null);
+  console.log(user);
+  const [exercises, setExercises] = useState([]);
+  const [steps, setSteps] = useState([]);
+  let navigate = useNavigate();
 
-  useEffect(() => {
-    async function fetchData(){
-      const response = await fetch('/me');
-      const userAwait = await response.json();
-      console.log(userAwait)
-      if (userAwait.error) setUser(null) 
-      else
-      {
-        setUser(user)
-        navigate("/")
-      };
+  useEffect(async () => {
+    const response = await fetch("/me");
+    const userAwait = await response.json();
+    console.log(userAwait);
+    if (userAwait.error) setUser(null);
+    else {
+      setUser(user);
+      navigate("/");
     }
-    fetchData();
   }, []);
 
   useEffect(() => {
-    function fetchExercises(){
-      fetch("/exercises")
+    fetch("/exercises")
       .then((r) => r.json())
       .then((exercisesData) => setExercises(exercisesData));
-    }
-    fetchExercises();
   }, []);
 
   return (
-    <div className="appBackground">
+    <Container>
+      <Global
+        styles={css`
+          body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1d1e;
+          }
+        `}
+      />
       <div className="App">
-        <NavBar className="appLinks" user={user} setUser={setUser}/>
-          <Routes >
-            <Route exact path="/" element={<Home user={user} setUser ={setUser}/>}/>
-            <Route exact path="/login" element={<Login  user= {user} onLogin= {setUser} />}/>
-            <Route exact path="/logout" element={<Logout  user= {user} onLogout= {setUser} />}/>
-            <Route exact path="/signup" element={<SignUp user= {user} onSignUp={setUser} />}/>
-            <Route exact path="/exercises" element={<ExerciseContainer exercises= {exercises}/>}/>
-            { user? <Route exact path="/trackers" element={<TrackerContainer exercises= {exercises} />}/> : <Route exact path="/login" element={<Login  user= {user} onLogin= {setUser} />}/> }
-            <Route path="*" element={<Login  user= {user} onLogin= {setUser} />}/>
-          </Routes>
+        <NavBar className="appLinks" user={user} setUser={setUser} />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<Home user={user} setUser={setUser} />}
+          />
+          <Route
+            exact
+            path="/login"
+            element={<Login user={user} onLogin={setUser} />}
+          />
+          <Route
+            exact
+            path="/logout"
+            element={<Logout user={user} onLogout={setUser} />}
+          />
+          <Route
+            exact
+            path="/signup"
+            element={<SignUp user={user} onSignUp={setUser} />}
+          />
+          <Route
+            exact
+            path="/exercises"
+            element={<ExerciseContainer exercises={exercises} />}
+          />
+          {user ? (
+            <Route
+              exact
+              path="/trackers"
+              element={<TrackerContainer exercises={exercises} />}
+            />
+          ) : (
+            <Route
+              exact
+              path="/login"
+              element={<Login user={user} onLogin={setUser} />}
+            />
+          )}
+          <Route path="*" element={<Login user={user} onLogin={setUser} />} />
+        </Routes>
       </div>
-    </div>
+    </Container>
   );
 }
 
