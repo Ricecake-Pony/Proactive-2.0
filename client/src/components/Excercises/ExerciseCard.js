@@ -3,11 +3,14 @@ import styled from "@emotion/styled";
 
 const Container = styled.div`
   border-style: solid;
+  border-color: pink;
+  display: flex;
   margin-left: 30%;
   margin-right: 30%;
   margin-bottom: 10px;
-  justify-content: center;
+  // justify-content: center;
   align-content: space-between;
+  flex-direction: row;
 
   .exerciseCard img {
     height: auto;
@@ -27,16 +30,18 @@ export default function ExerciseCard({ exercise }) {
         className="exerciseImage"
         src={exercise.image}
         alt={`This is a picture of performing ${exercise.title}`}
-      />
-      <p>{exercise.title}</p>
-      <p>{exercise.description}</p>
-      <ol>
-        {exercise.render_steps.map((exerciseObj) => (
-          <li> {exerciseObj.step_text} </li>
-        ))}
-        {/* HWas stuck because I was mapping over an object which is ruby logic. Needed to map over an array in React of course. */}
-      </ol>
-      <p> {exercise.duration} </p>
+        />
+      <div className="card-info">
+        <h2>{exercise.title}</h2>
+        <p>{exercise.description}</p>
+        <ol>
+          {exercise.render_steps.map((exerciseObj) => (
+            <li> {exerciseObj.step_text} </li>
+            ))}
+          {/* I was stuck because I was mapping over an object which is ruby logic. Needed to map over an array in React of course. */}
+        </ol>
+        <h2> {exercise.duration} </h2>
+      </div>
     </Container>
   );
 }

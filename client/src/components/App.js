@@ -21,24 +21,8 @@ const Container = styled.div`
     width: 20%;
     background-color: transparent;
   }
-  .exerciseCard {
-    border-style: solid;
-    margin-left: 30%;
-    margin-right: 30%;
-    margin-bottom: 10px;
-    justify-content: center;
-    align-content: space-between;
-  }
+  
 
-  .exerciseCard img {
-    height: auto;
-    width: 200px;
-  }
-
-  .exerciseCard p {
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
 `;
 
 function App() {

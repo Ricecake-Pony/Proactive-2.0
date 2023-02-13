@@ -3,7 +3,7 @@ import ExerciseCard from "./ExerciseCard";
 
 export default ({ exercises }) => {
   return (
-    <div>
+    <div className="exercise-container">
       <br />
       {exercises.map((exercise) => (
         <ExerciseCard key={exercise.id} exercise={exercise} />
