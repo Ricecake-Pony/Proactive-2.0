@@ -49,7 +49,7 @@ export default function Home() {
         <h3>Benefits of Stretching and why we should do it:</h3>
         <img
           className="img1"
-          src="https://i.pinimg.com/originals/bf/42/72/bff427261e9dec96527caacfcb263db42.jpg"
+          src="https://cdn-elgbf.nitrocdn.com/ZyNWsRqRabdHNlHvWlpiYBfRzZbyjjey/assets/static/optimized/rev-a24ecd7/wp-content/uploads/2021/08/Benefits_of_stretching.jpg"
           alt=""
         />
       </div>
