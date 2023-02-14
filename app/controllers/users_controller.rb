@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
     skip_before_action :authorize
 
-    def index
-        users = User.all
-        render json: users
-    end
-    
+    # def index
+    #     users = User.all
+    #     render json: users
+    # end
+    # def user_posts
+    #     render json: Post.find(session[:user_id]).trackers
+    # end
+
     def login
         user = User.create(user_params)
         if user.valid?

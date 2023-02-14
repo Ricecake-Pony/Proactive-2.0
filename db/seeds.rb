@@ -31,7 +31,7 @@ puts "Trackers created!"
 puts " Creating Steps for exercises"
 Step.create(step_number: 1, step_text: "Raise your arm and bend it so that your hand reaches toward the opposite side.", exercise: e1)
 Step.create(step_number: 2, step_text: "Use your other hand and pull the elbow toward your head until you feel a stretch", exercise: e1)
-Step.create(step_number: 1, step_text: "Touch those toes!", exercise: e2)
+Step.create(step_number: 1, step_text: "Lean to one side and stretch your finger tips to the side", exercise: e2)
 Step.create(step_number: 1, step_text: "Clasp hands together above the head with palms facing outward.", exercise: e3)
 Step.create(step_number: 2, step_text: "Push your arms up, stretching upward.", exercise: e3)
 Step.create(step_number: 1, step_text: "Clasp hands behind your back", exercise: e4)

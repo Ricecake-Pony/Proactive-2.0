@@ -46,8 +46,13 @@ const Container = styled.div`
     font-weight: 700;
   }
   .login a {
-    color: #397769;
+    color: #006600;
   }
+
+  .logout a {
+    color: white;
+  }
+
   .signup {
     width: 50%;
     height: 100%;
@@ -64,7 +69,7 @@ const Container = styled.div`
     font-weight: 700;
   }
   .signup a {
-    color: white;
+    color: #006600;
     text-decoration: none;
   }
   .login:hover {
@@ -96,9 +101,11 @@ export default function NavBar({ user }) {
 
       <div className="nav-buttons">
         {user ? (
+          <div className="logout">
           <NavLink className="link" to="/logout">
             Logout
           </NavLink>
+          </div>
         ) : (
           <>
             <div className="login">
