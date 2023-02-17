@@ -4,7 +4,10 @@ import styled from "@emotion/styled";
 const Container = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content:flex-start:
+  justify-content:flex-start;
+  border-style: solid;
+  border-width: 5px;
+  border-color: tomato;
 `;
 
 export default function TrackerForm({ addTrackerLog, exercises }) {
@@ -49,25 +52,31 @@ export default function TrackerForm({ addTrackerLog, exercises }) {
 
   return (
     <Container onSubmit={submitNewTrackerLog}>
-      <label> Exercise Name: </label>
-      <select onChange={exerciseNameChange}>
-        <option defaultValue="">Select Option</option>
-        {exercises.map((exercise) => (
-          <option key={exercise.id} value={exercise.id}>
-            {exercise.title}
-          </option>
-        ))}
-      </select>
+      <div className="top-line-inputs">
+        <div className="input-exercise-name">
+        <label> Exercise Name: </label>
+        <select onChange={exerciseNameChange}>
+          <option defaultValue="">Select Option</option>
+          {exercises.map((exercise) => (
+            <option key={exercise.id} value={exercise.id}>
+              {exercise.title}
+            </option>
+          ))}
+        </select>
+        <br />
+          </div>
+      <div className="input-repetitions">
+        <label>Repetitions:</label>
+        <input
+          placeholder="Enter How many repetitions"
+          type="text"
+          value={addExerciseReps}
+          onChange={exerciseRepsChange}
+          />
+      </div>
+          </div>  
       <br />
-      <label>Number of times Exercise was performed:</label>
-      <input
-        placeholder="Enter How many repetitions"
-        type="text"
-        value={addExerciseReps}
-        onChange={exerciseRepsChange}
-      />
-      <br />
-      <label>How did it go?</label>
+      <label>Notes:</label>
       <input
         placeholder="Enter a Comment"
         type="text"
@@ -75,13 +84,14 @@ export default function TrackerForm({ addTrackerLog, exercises }) {
         onChange={commentChange}
       />
       <br />
-      <label>Date</label>
+      <label>Date:</label>
       <input
+        className="input-date"
         type="date"
         value={addDate}
         onChange={dateChange}
       />
-      <input type="submit" />
+      <input className="submit-button" type="submit" />
     </Container>
   );
 }

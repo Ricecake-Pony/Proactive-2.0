@@ -1,19 +1,16 @@
 import { React, useState } from "react";
 import styled from "@emotion/styled";
 
+// This container is for the edit form not the entire parent jsx tag.
 const Container = styled.div`
   display: flex;
-  // flex-direction: column;
-  // justify-content: flex-start;
-  // div {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
-    // align-items: flex-start;
-  }
-  exercise-header{
-    justify-content:space-between;
-    flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-start;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 `;
 export default function Tracker({
@@ -45,14 +42,15 @@ export default function Tracker({
 
   return (
     <div className="tracker-log">
-      <h4 className="exercise-header">Journal Entry: {trackerLog.exercise_name}
-        <p> Reps:{trackerLog.exercise_reps}</p>
+      <h4 className="exercise-header">{trackerLog.exercise_name}
+        <div className="reps-log"> Reps:{trackerLog.exercise_reps}</div>
       </h4>
       <p> Notes: {trackerLog.comment}</p>
-      <p> Date: {trackerLog.date}</p>
+      <p> Posted on: {trackerLog.date}</p>
 
-      <div className="U-D-buttons">
+      <div className="U-D-buttons" >
         <button
+        className="edit-button"
           onClick={(e) => {
             setShowForm(!showForm);
           }}
@@ -103,7 +101,7 @@ export default function Tracker({
           </div>
           <div>
             <button onClick={submitUpdatedTrackerLog}>submit</button>
-            <label>Date of entry: {trackerLog.date}</label>
+            <label>Original Date of Entry: {trackerLog.date}</label>
           </div>
         </Container>
       )}

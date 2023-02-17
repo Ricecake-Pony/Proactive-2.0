@@ -11,22 +11,50 @@ const Container = styled.div`
   justify-content: space-between;
   // align-items: center;
 
-  .submit-form {
-    // display:flex
+  .submit-form{
+    display:flex
     // justify-content: flex-start;
     width: 50%;
+    
   }
 
-  img {
+  .top-line-inputs{
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .input-exercise-name{
+    width:50%;
+    border-style: solid;
+  }
+  .input-repetitions{
+    width:50%;
+    border-style: dashed;
+  }
+  
+  .input-date{
+
+  }
+  .submit-button{
+    background-color: #76c3b1;
+    border: none;
+    color: white;
+    padding: 6px 2px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  img{
     width: 400px;
     height: 350px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: purple;
   }
 
   .trackers{
     border-style: dotted;
-    // display:flex;
-    // justify-content: flex-end;
-    flex-direction: column;
     border-width: 10px;
     width: 50%;
   }
@@ -37,16 +65,64 @@ const Container = styled.div`
     border-color: green;
   }
 
-  .tracker-log {
-    border-style: ridge;
-    border-width: 10px;
+  .tracker-log{
+    
+    border-style: solid;
+    border-width: 4px;
     border-radius: 2%;
-    border-color: #ac8887;
+    border-color: #71DDC4;
+    margin: 3%;
+    display: flex;
+    flex-direction: column;
   }
-  .tracker-log p {
-    margin-top: 10px;
-    margin-bottom: 10px;
+
+  .tracker-log p{
+    display: flex;
+    align-items: flex-start;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: 'lato';
   }
+
+  
+  .exercise-header{
+    font-family: 'Mulish';
+    display:flex;
+    // algin-items: center;
+    justify-content:space-between;
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
+  .reps-log{
+    margin: 0%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #71DDC4;
+  }
+
+  .U-D.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edit-button{
+    width: 50%;
+    height: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color:#C7A756 ;
+    font-family: 'Mulish';
+  }
+  .delete-button{
+    width: 50%;
+    height: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color:#AC4141 ;
+    font-family: 'Mulish';
+  }
+
 `;
 
 export default function TrackerContainer({ exercises }) {
