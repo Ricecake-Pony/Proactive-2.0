@@ -22,7 +22,6 @@ const Container = styled.div`
     background-color: transparent;
   }
   
-
 `;
 
 function App() {

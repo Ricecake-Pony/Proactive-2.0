@@ -3,13 +3,17 @@ import styled from "@emotion/styled";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+  // flex-direction: column;
+  // justify-content: flex-start;
+  // div {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    // align-items: flex-start;
+  }
+  exercise-header{
+    justify-content:space-between;
+    flex-direction: row;
   }
 `;
 export default function Tracker({
@@ -40,13 +44,14 @@ export default function Tracker({
   };
 
   return (
-    <div className="trackerLog">
-      <h4>Journal Entry: {trackerLog.exercise_name}</h4>
-      <p> Reps:{trackerLog.exercise_reps}</p>
+    <div className="tracker-log">
+      <h4 className="exercise-header">Journal Entry: {trackerLog.exercise_name}
+        <p> Reps:{trackerLog.exercise_reps}</p>
+      </h4>
       <p> Notes: {trackerLog.comment}</p>
       <p> Date: {trackerLog.date}</p>
 
-      <div>
+      <div className="U-D-buttons">
         <button
           onClick={(e) => {
             setShowForm(!showForm);
@@ -55,7 +60,7 @@ export default function Tracker({
           Edit
         </button>
         <button
-          className="deleteButton"
+          className="delete-button"
           onClick={(e) => {
             deleteTrackerLog(trackerLog.id);
           }}

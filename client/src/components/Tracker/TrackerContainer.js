@@ -7,10 +7,14 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .submitForm {
+  // flex-direction: column;
+  justify-content: space-between;
+  // align-items: center;
+
+  .submit-form {
+    // display:flex
+    // justify-content: flex-start;
+    width: 50%;
   }
 
   img {
@@ -18,13 +22,28 @@ const Container = styled.div`
     height: 350px;
   }
 
-  .trackerLog {
+  .trackers{
+    border-style: dotted;
+    // display:flex;
+    // justify-content: flex-end;
+    flex-direction: column;
+    border-width: 10px;
+    width: 50%;
+  }
+
+  .form-with-img{
+    border-style: solid;
+    border-width: 10px;
+    border-color: green;
+  }
+
+  .tracker-log {
     border-style: ridge;
     border-width: 10px;
     border-radius: 2%;
     border-color: #ac8887;
   }
-  .trackerLog p {
+  .tracker-log p {
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -94,24 +113,28 @@ export default function TrackerContainer({ exercises }) {
 
   return (
     <Container>
-      <img
-        src="https://blog.myfitnesspal.com/wp-content/uploads/2017/08/UA_TEMP1MONWEEK_GFX_JP_TM_V4.jpg"
-        alt=""
-      />
-      <TrackerForm
-        className="trackerForm"
-        addTrackerLog={addTrackerLog}
-        exercises={exercises}
-      />
+      <div className="form-with-img">
+        <img
+          src="https://blog.myfitnesspal.com/wp-content/uploads/2017/08/UA_TEMP1MONWEEK_GFX_JP_TM_V4.jpg"
+          alt=""
+          />
+        <TrackerForm
+          className="tracker-form"
+          addTrackerLog={addTrackerLog}
+          exercises={exercises}
+          />
+      </div>
+      <div className="trackers">
       {trackerLogs.map((trackerLog) => (
         <Tracker
-          exercises={exercises}
-          key={trackerLog.id}
-          trackerLog={trackerLog}
-          deleteTrackerLog={deleteTrackerLog}
-          patchTrackerLog={patchTrackerLog}
+        exercises={exercises}
+        key={trackerLog.id}
+        trackerLog={trackerLog}
+        deleteTrackerLog={deleteTrackerLog}
+        patchTrackerLog={patchTrackerLog}
         />
-      ))}
+        ))}
+        </div>
     </Container>
   );
 }
