@@ -11,118 +11,83 @@ const Container = styled.div`
   justify-content: space-between;
   // align-items: center;
 
-  .submit-form{
-    display:flex
-    // justify-content: flex-start;
-    width: 50%;
-    
-  }
-
-  .top-line-inputs{
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .input-exercise-name{
-    width:50%;
-    border-style: solid;
-  }
-  .input-repetitions{
-    width:50%;
-    border-style: dashed;
-  }
-  
-  .input-date{
-
-  }
-  .submit-button{
-    background-color: #76c3b1;
-    border: none;
-    color: white;
-    padding: 6px 2px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
-
-  img{
+  img {
+    margin-top: 15px;
     width: 400px;
     height: 350px;
-    border-style: solid;
-    border-width: 4px;
-    border-color: purple;
+    // border-style: solid;
+    // border-width: 4px;
+    // border-color: purple;
   }
 
-  .trackers{
+  .trackers {
     border-style: dotted;
     border-width: 10px;
     width: 50%;
   }
 
-  .form-with-img{
+  .form-with-img {
+    margin-top: 15px;
     border-style: solid;
-    border-width: 10px;
-    border-color: green;
+    border-color: #76c3b1;
+    border-radius: 5px;
   }
 
-  .tracker-log{
-    
+  .tracker-log {
     border-style: solid;
     border-width: 4px;
     border-radius: 2%;
-    border-color: #71DDC4;
+    border-color: #71ddc4;
     margin: 3%;
     display: flex;
     flex-direction: column;
   }
 
-  .tracker-log p{
+  .tracker-log p {
     display: flex;
     align-items: flex-start;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-family: 'lato';
+    font-family: "Lato";
   }
 
-  
-  .exercise-header{
-    font-family: 'Mulish';
-    display:flex;
+  .exercise-header {
+    font-family: "Mulish";
+    display: flex;
     // algin-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
     margin-top: 0%;
     margin-bottom: 0%;
   }
-  .reps-log{
+  .reps-log {
     margin: 0%;
     border-style: solid;
     border-width: 3px;
-    border-color: #71DDC4;
+    border-color: #71ddc4;
   }
 
-  .U-D.buttons{
+  .U-D.buttons {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .edit-button{
+  .edit-button {
     width: 50%;
     height: 100%;
     border-radius: 3px;
     cursor: pointer;
-    background-color:#C7A756 ;
-    font-family: 'Mulish';
+    background-color: #c7a756;
+    font-family: "Mulish";
   }
-  .delete-button{
+  .delete-button {
     width: 50%;
     height: 100%;
     border-radius: 3px;
     cursor: pointer;
-    background-color:#AC4141 ;
-    font-family: 'Mulish';
+    background-color: #ac4141;
+    font-family: "Mulish";
   }
-
 `;
 
 export default function TrackerContainer({ exercises }) {
@@ -193,24 +158,24 @@ export default function TrackerContainer({ exercises }) {
         <img
           src="https://blog.myfitnesspal.com/wp-content/uploads/2017/08/UA_TEMP1MONWEEK_GFX_JP_TM_V4.jpg"
           alt=""
-          />
+        />
         <TrackerForm
           className="tracker-form"
           addTrackerLog={addTrackerLog}
           exercises={exercises}
-          />
+        />
       </div>
       <div className="trackers">
-      {trackerLogs.map((trackerLog) => (
-        <Tracker
-        exercises={exercises}
-        key={trackerLog.id}
-        trackerLog={trackerLog}
-        deleteTrackerLog={deleteTrackerLog}
-        patchTrackerLog={patchTrackerLog}
-        />
+        {trackerLogs.map((trackerLog) => (
+          <Tracker
+            exercises={exercises}
+            key={trackerLog.id}
+            trackerLog={trackerLog}
+            deleteTrackerLog={deleteTrackerLog}
+            patchTrackerLog={patchTrackerLog}
+          />
         ))}
-        </div>
+      </div>
     </Container>
   );
 }
