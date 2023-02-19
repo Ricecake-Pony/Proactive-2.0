@@ -43,7 +43,7 @@ export default function Tracker({
   return (
     <div className="tracker-log">
       <h4 className="exercise-header">{trackerLog.exercise_name}
-        <div className="reps-log"> Reps:{trackerLog.exercise_reps}</div>
+        <div className="reps-log"> Reps: {trackerLog.exercise_reps}</div>
       </h4>
       <p> Notes: {trackerLog.comment}</p>
       <p> Posted on: {trackerLog.date}</p>
@@ -92,7 +92,7 @@ export default function Tracker({
             />
           </div>
           <div>
-            <label>How did it go?</label>
+            <label>Notes:</label>
             <input
               type="text"
               value={updateComment}
