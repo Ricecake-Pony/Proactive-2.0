@@ -21,8 +21,9 @@ const Container = styled.div`
   }
 
   .trackers {
-    border-style: dotted;
-    border-width: 10px;
+    margin-top: 15px;
+    border-style: solid;
+    border-width: 3px;
     width: 50%;
   }
 
@@ -48,7 +49,7 @@ const Container = styled.div`
     align-items: flex-start;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-family: "Lato";
+    font-family: "lato";
   }
 
   .exercise-header {

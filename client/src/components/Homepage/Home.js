@@ -44,7 +44,10 @@ const Container = styled.div`
     font-family:"Mulish"; 
   }
 
+  //  How  to make both images stay side by side? Not necessary?
   .negative-img{
+    display: flex;
+    position: absolute;
     display:flex;
     justify-content: space-between;
   }

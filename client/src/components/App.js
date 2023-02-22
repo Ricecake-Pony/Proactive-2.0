@@ -26,9 +26,7 @@ const Container = styled.div`
 
 function App() {
   const [user, setUser] = useState(null);
-  console.log(user);
   const [exercises, setExercises] = useState([]);
-  const [steps, setSteps] = useState([]);
   let navigate = useNavigate();
 
   useEffect(async () => {

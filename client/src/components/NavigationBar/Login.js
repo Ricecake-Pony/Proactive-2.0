@@ -1,6 +1,23 @@
 import { React, useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import styled from "@emotion/styled";
 
+const Container = styled.form`
+  width: 100%;
+  height: 100vh;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .login-form {
+    width: 40%;
+  }
+  .login-form input {
+    margin-bottom: 20px;
+  }
+`;
 export default function Login({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -21,21 +38,20 @@ export default function Login({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user),
-        navigate("/"));
+        r.json().then((user) => onLogin(user), navigate("/"));
       } else {
-        r.json().then((err) =>{
+        r.json().then((err) => {
           console.log(err);
-          setErrors(err.errors)}
-          );
+          setErrors(err.errors);
+        });
       }
     });
   }
-  
+
   return (
-    <form  className="loginForm" onSubmit={handleSubmit}>
-    
-        <label htmlFor="username">Username</label>
+    <Container onSubmit={handleSubmit}>
+      <div className="login-form">
+        <label htmlFor="username">Username: </label>
         <input
           className="username"
           type="text"
@@ -44,8 +60,8 @@ export default function Login({ onLogin }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-
-        <label htmlFor="password">Password</label>
+        <br />
+        <label htmlFor="password">Password: </label>
         <input
           className="password"
           type="password"
@@ -54,15 +70,15 @@ export default function Login({ onLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-
+        <br />
         <button variant="fill" color="primary" type="submit">
           {isLoading ? "Loading..." : "Login"}
         </button>
-
+        <br />
         {errors.map((err) => (
           <error key={err}>{err}</error>
         ))}
-
-    </form>
+      </div>
+    </Container>
   );
 }

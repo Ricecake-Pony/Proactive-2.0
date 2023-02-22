@@ -1,16 +1,36 @@
 import React, { useState } from "react";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import styled from "@emotion/styled";
 
-function SignUp({onSignUp}) {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordConfirmation, setPasswordConfirmation] = useState("");
-    const [full_name, setFullName] = useState("");
-    const [errors, setErrors] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-// console.log(errors)
+const Container = styled.form`
+  width: 100%;
+  height: 100vh;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
-let navigate = useNavigate();
+  .signup-form {
+    width: 40%;
+  }
+  .signup-form input {
+    margin-bottom: 20px;
+  }
+  .pass-conf {
+    margin-right: 87px;
+  }
+`;
+
+function SignUp({ onSignUp }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  // console.log(errors)
+
+  let navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -29,24 +49,20 @@ let navigate = useNavigate();
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onSignUp(user),
-        navigate('/'));
+        r.json().then((user) => onSignUp(user), navigate("/"));
       } else {
         r.json().then((err) => {
           // console.log(err)
-          setErrors(err.errors) 
-          
+          setErrors(err.errors);
         });
-        
-      
       }
     });
   }
 
   return (
-    
-    <form class="signup-form" onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+    <Container onSubmit={handleSubmit}>
+      <div className="signup-form">
+        <label htmlFor="username">Username:</label>
         <input
           type="text"
           id="username"
@@ -54,9 +70,8 @@ let navigate = useNavigate();
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-
-      
-        <label htmlFor="password">Password</label>
+        <br />
+        <label htmlFor="password">Password:</label>
         <input
           class="password"
           type="password"
@@ -65,34 +80,25 @@ let navigate = useNavigate();
           onChange={(e) => setPassword(e.target.value)}
           autoComplete="current-password"
         />
-
-
-        <label htmlFor="password_confirmation">Password Confirmation</label>
-        <input
-          class="password-confirmation"
-          type="password"
-          id="password_confirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          autoComplete="current-password"
-        />
-    
-        <label htmlFor="full_name">Full Name:</label>
-        <input
-          class="full_Name"
-          type="text"
-          id="full_name"
-          value={full_name}
-          onChange={(e) => setFullName(e.target.value)}
-        />
-
+        <br />
+        <div className="pass-conf">
+          <label htmlFor="password_confirmation">Password Confirmation:</label>
+          <input
+            class="password-confirmation"
+            type="password"
+            id="password_confirmation"
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+          />
+          <br />
+        </div>
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
 
         {errors.map((err) => (
           <error key={err}>{err}</error>
         ))}
-
-    </form>
+      </div>
+    </Container>
   );
 }
 
