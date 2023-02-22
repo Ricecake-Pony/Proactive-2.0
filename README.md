@@ -1,4 +1,4 @@
-# Pod-Cats
+# Proactive 2.0
 
 > This is a web application for users to browse and find highly rated podcasts. 
 
@@ -35,6 +35,8 @@ https://www.loom.com/share/69c211a60abc4feba45cbfd43bf76b41
 > Currently using Render/ Postgres for deployment but the deployment is about to expire on Render's server, so only a demo is accesible besides for looking at the code itself. But you can access some of the website created with just the Frontend like the Home Page using:
 
 npm install, cd client, npm start
+
+You can look at the migrations and seeds within the file itself to look at the data on the backend and how it was set up.
 
 ## Requirements
 
