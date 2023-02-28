@@ -35,15 +35,13 @@ export default function Login({ onLogin }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user), navigate("/"));
-      } else {
-        r.json().then((err) => {
-          console.log(err);
-          setErrors(err.errors);
-        });
+    }).then(async (r) => {
+      let response = await r.json();
+      console.log(response);
+      if (response?.error) {
+        setErrors(response.error);
+      } if (response?.username) {
+        console.log(response);
       }
     });
   }
@@ -62,6 +60,7 @@ export default function Login({ onLogin }) {
         />
         <br />
         <label htmlFor="password">Password: </label>
+
         <input
           className="password"
           type="password"
@@ -70,14 +69,21 @@ export default function Login({ onLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
         <br />
+
+        {errors.length > 0 && (
+          <div >
+            {errors.map((error) => (
+              <div style={{ color: "red" }} key={error}>{error}</div>
+            ))}
+          </div>
+        )}
+
         <button variant="fill" color="primary" type="submit">
           {isLoading ? "Loading..." : "Login"}
         </button>
         <br />
-        {errors.map((err) => (
-          <error key={err}>{err}</error>
-        ))}
       </div>
     </Container>
   );

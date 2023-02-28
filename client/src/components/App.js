@@ -21,7 +21,6 @@ const Container = styled.div`
     width: 20%;
     background-color: transparent;
   }
-  
 `;
 
 function App() {
@@ -29,15 +28,18 @@ function App() {
   const [exercises, setExercises] = useState([]);
   let navigate = useNavigate();
 
-  useEffect(async () => {
-    const response = await fetch("/me");
-    const userAwait = await response.json();
-    console.log(userAwait);
-    if (userAwait.error) setUser(null);
-    else {
-      setUser(user);
-      navigate("/");
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("/me");
+      const userAwait = await response.json();
+      console.log(userAwait);
+      if (userAwait.error) setUser(null);
+      else {
+        setUser(user);
+        navigate("/");
+      }
     }
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -54,6 +56,7 @@ function App() {
             margin: 0;
             padding: 0;
             background-color: #1a1d1e;
+            font-family: lato;
           }
         `}
       />

@@ -17,8 +17,10 @@ const Container = styled.form`
   .signup-form input {
     margin-bottom: 20px;
   }
-  .pass-conf {
-    margin-right: 87px;
+  .pass-conf  {
+    display: flex;
+    flex-direction: row;
+    width: 110%;
   }
 `;
 
@@ -28,7 +30,6 @@ function SignUp({ onSignUp }) {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // console.log(errors)
 
   let navigate = useNavigate();
 
@@ -44,17 +45,18 @@ function SignUp({ onSignUp }) {
       body: JSON.stringify({
         username,
         password,
-        password_confirmation: passwordConfirmation,
+        passwordConfirmation,
       }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onSignUp(user), navigate("/"));
-      } else {
-        r.json().then((err) => {
-          // console.log(err)
-          setErrors(err.errors);
-        });
+    }).then(async (r) => {
+      setIsLoading(true);
+      let response = await r.json();
+      console.log(response);
+
+      if (response?.error) {
+        setErrors(response.error);
+      }
+      if (response?.username) {
+        console.log(response);
       }
     });
   }
@@ -66,7 +68,6 @@ function SignUp({ onSignUp }) {
         <input
           type="text"
           id="username"
-          autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -78,11 +79,11 @@ function SignUp({ onSignUp }) {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          autoComplete="current-password"
         />
         <br />
         <div className="pass-conf">
           <label htmlFor="password_confirmation">Password Confirmation:</label>
+          <br />
           <input
             class="password-confirmation"
             type="password"
@@ -92,14 +93,21 @@ function SignUp({ onSignUp }) {
           />
           <br />
         </div>
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-
-        {errors.map((err) => (
-          <error key={err}>{err}</error>
+        {errors.map((error) => (
+          <div style={{ color: "red" }} key={error}>
+            {error}
+          </div>
         ))}
       </div>
+      <button
+        type="submit"
+        disabled={password !== passwordConfirmation || !username}>
+        {isLoading ? "Loading..." : "Sign Up"}
+      </button>
     </Container>
   );
 }
 
 export default SignUp;
+
+// Added disabled on 103 for true password verification and || to verify that if the username is also not filled out that they will not have ability to sign up.
