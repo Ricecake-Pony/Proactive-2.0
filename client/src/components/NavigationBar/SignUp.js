@@ -58,6 +58,7 @@ function SignUp({ onSignUp }) {
       if (response?.username) {
         console.log(response);
       }
+      navigate("/login")
     });
   }
 
@@ -111,3 +112,10 @@ function SignUp({ onSignUp }) {
 export default SignUp;
 
 // Added disabled on 103 for true password verification and || to verify that if the username is also not filled out that they will not have ability to sign up.
+
+
+
+// tatertot@gmail.com
+// Potato
+// Potato!1
+//  https://cdn.vox-cdn.com/thumbor/DEM_zpQv4871Uh8gEkM5tGMqPZM=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/9064347/tater_tots_closeup.jpg

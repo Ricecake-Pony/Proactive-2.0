@@ -101,6 +101,7 @@ export default function TrackerContainer({ exercises }) {
     }
     fetchTrackerData();
   }, []);
+
   function addTrackerLog(newEntry) {
     fetch("/trackers", {
       method: "POST",
@@ -116,6 +117,7 @@ export default function TrackerContainer({ exercises }) {
       }
     });
   }
+  
   function filteredUpdatedLogs(updatedTrackerLog) {
     const filteredTrackerLogs = trackerLogs.filter(
       (trackerLog) => trackerLog.id !== updatedTrackerLog.id
@@ -138,8 +140,6 @@ export default function TrackerContainer({ exercises }) {
     });
   }
 
-  // Lets try to have the update form function here instead of its own component. Nah it overwrites the POST submit form when I place it here.
-  // Added above Patch function and passed props on line 78.
   function deleteTrackerLog(trackerLogId) {
     console.log("deleting....");
     const filteredResult = trackerLogs.filter(

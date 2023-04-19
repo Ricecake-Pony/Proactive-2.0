@@ -13,7 +13,6 @@ const Container = styled.div`
   align-content: space-between;
   flex-direction: row;
   border-radius: 10px;
-  
 
   .exerciseImage {
     border-radius: 7px;

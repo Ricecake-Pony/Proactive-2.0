@@ -28,18 +28,16 @@ function App() {
   const [exercises, setExercises] = useState([]);
   let navigate = useNavigate();
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/me");
-      const userAwait = await response.json();
-      console.log(userAwait);
-      if (userAwait.error) setUser(null);
-      else {
-        setUser(user);
-        navigate("/");
-      }
+  useEffect(async () => {
+    const response = await fetch("/me");
+    const userAwait = await response.json();
+    console.log(userAwait);
+    if (userAwait.error) setUser(null);
+    else {
+      setUser(userAwait);
+      navigate("/");
+      console.log(userAwait)
     }
-    fetchData();
   }, []);
 
   useEffect(() => {

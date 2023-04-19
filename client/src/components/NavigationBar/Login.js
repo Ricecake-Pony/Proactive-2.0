@@ -43,6 +43,7 @@ export default function Login({ onLogin }) {
       } if (response?.username) {
         console.log(response);
       }
+      navigate("/")
     });
   }
 
