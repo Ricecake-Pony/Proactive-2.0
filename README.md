@@ -1,6 +1,6 @@
 # Proactive 2.0
 
-> This is a web application for users to browse and find highly rated podcasts. 
+> This is a web application for anyone who works at a desk to better themselves and stop poor habits from affecting their longterm health with stretching.
 
 ## Table of Contents
 1. [Motivation](#Demo)
